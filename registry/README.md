@@ -48,11 +48,43 @@ The example above would save to: ~/.nearai/registry/gagdiez.near/hello-ai/latest
 
 ---
 
-Uploading an Agent
+**Uploading an Agent**
+If you created an agent and would like to share it with others, you can upload it to the registry. To upload an agent, you must be logged in.
+
+The upload command requires the path to the agent folder stored locally, for example:
+
+```sh
+nearai registry upload ~/.nearai/registry/<your-account.near>/<agent_folder>
+
+# optionally you can run this directly in the folder
+nearai registry upload
+```
+
+The folder must contain:
+- agent.py: Agent logic
+- metadata.json: Agent information (ex: description, tags, and model, etc.)
+
+> DANGER: All files in this folder will be uploaded to the registry which is PUBLIC! Make sure you are not including any sensitive data.
 
 
+---
 
+**Embedding an Agent**
+You can embed NEAR AI agents directly into your website using an iframe. This allows users to interact with your agent without leaving your site.
+Basic Embedding¶
 
+To embed an agent, use the following iframe code replacing the src with the agent you want to embed.
+
+Example:
+```html
+<iframe 
+  src="https://app.near.ai/embed/<your-account.near>/<your-agent-name>/latest" 
+  sandbox="allow-scripts allow-popups allow-same-origin allow-forms"
+  style="border: none; height: 100svh;">
+</iframe>
+```
+
+https://docs.near.ai/agents/registry/#embedding-an-agent
 
 ---
 
