@@ -77,6 +77,41 @@ This document provides a comprehensive overview of the available models in the N
 | Image Input | 4 models |
 | Tools Support | 5 models |
 
+### Understanding Tool Support
+
+Tool support refers to a model's ability to interact with external tools and APIs to perform specific tasks. Models with tool support can:
+
+1. **Code Operations**
+   - Execute code snippets
+   - Debug existing code
+   - Manage files and directories
+   - Generate and modify source code
+
+2. **File System Tools**
+   - Create, read, update, and delete files
+   - Navigate directory structures
+   - Search file contents
+   - Rename and move files
+
+3. **Development Tools**
+   - Run shell commands
+   - Manage development servers
+   - Handle package dependencies
+   - Execute build processes
+
+4. **Analysis Tools**
+   - Parse and analyze code
+   - Search for code references
+   - Track code definitions
+   - Examine code structure
+
+Models with tool support can seamlessly integrate these capabilities into their responses, making them particularly effective for:
+- Software development tasks
+- Project management
+- System administration
+- Automated testing and debugging
+- Documentation generation
+
 ## Usage Recommendations
 
 1. **General Purpose Tasks**
