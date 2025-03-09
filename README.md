@@ -56,6 +56,7 @@ nearai registry upload <path-to-agent>
 ---
 
 ### Docs
+- [README](DOCS/README.md)
 - [models](DOCS/models.md)
 
 registry
