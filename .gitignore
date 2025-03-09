@@ -7,6 +7,17 @@ config.json
 # obsidian
 .obsidian/workspace.json
 
+
+# 👋 
+# nearai
+# https://github.com/nearai/nearai
+# git clone https://github.com/nearai/nearai.git
+nearai
+
+
+
+
+
 # 👋
 # nearai registry
 # you can download and learn from
