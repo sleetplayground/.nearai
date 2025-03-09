@@ -4,6 +4,7 @@ my playground for learning and developing near ai agents
 Links:
 - https://near.ai/
 - https://docs.near.ai/
+- https://app.near.ai/
 - https://github.com/nearai/nearai
 
 ---
