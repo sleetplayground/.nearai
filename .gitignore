@@ -15,8 +15,12 @@ config.json
 # so i can have all the near ai docs!
 nearai
 
-
-
+# 👋
+# official-agents
+# https://github.com/nearai/official-agents
+# git clone https://github.com/nearai/official-agents.git
+# some agent samples so i don't have to download form the registry
+official-agents
 
 
 # 👋
