@@ -1,0 +1,14 @@
+# Mac OS
+.DS_Store
+
+# .nearai config file
+config.json
+
+
+# 👋
+# nearai registry
+# you can download and learn from
+# other agents in the registry.
+
+registry/gagdiez.near/hello-ai
+# nearai registry download gagdiez.near/hello-ai/latest
