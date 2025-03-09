@@ -25,6 +25,10 @@ python3 -m pip install nearai
 ```sh
 nearai login
 
+# It's probly safe to logout
+# so you don't accidently push something
+nearai logout
+
 ### Login with NEAR Account ID Only
 nearai login --accountId name.near
 
