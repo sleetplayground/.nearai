@@ -266,13 +266,6 @@ Fine-tuning for NEAR smart contract interactions is not always necessary. For ma
 
 Carefully evaluate the cost-benefit ratio before committing to a fine-tuning approach, and consider hybrid solutions that combine standard and fine-tuned models for optimal results.
 
-## Resources
-
-- [NEAR AI Documentation](https://docs.near.org/tools/near-ai-engine)
-- [NEAR AI Examples Repository](https://github.com/near/ai-examples)
-- [NEAR Contract Development Best Practices](https://docs.near.org/develop/contracts/best-practices)
-- [NEAR AI Discord Community](https://near.org/discord)
-- [Fine-Tuning Best Practices](https://example.com/fine-tuning)
-- [Contract Interaction Patterns](https://example.com/patterns)
+---
 
 Remember that the field of AI and smart contract interactions is rapidly evolving. Regular review and updates of your approach will ensure optimal performance and cost-effectiveness.
