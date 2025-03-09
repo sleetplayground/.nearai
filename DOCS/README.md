@@ -10,3 +10,8 @@ you can open this entire folder .nearai in your favorite ide.
 
 
 the .gitignore files have info on how to clone or download agents.
+
+
+---
+![](src/sleet_banner_100px_7d84b2.svg)
+copyright 2025 by sleet.near
