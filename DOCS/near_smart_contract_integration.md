@@ -6,9 +6,10 @@ This guide explains how to create AI agents that interact with NEAR smart contra
 ## Agent-Contract Interaction Patterns
 
 ### 1. Basic Contract Communication
-- **View Methods**: Read-only contract calls (e.g., checking balances)
-- **Change Methods**: State-modifying calls (e.g., deposits, transfers)
-- **Gas Management**: Handling transaction costs
+- **View Methods**: Read-only contract calls (e.g., checking balances, NFT metadata)
+- **Change Methods**: State-modifying calls (e.g., deposits, transfers, staking)
+- **Gas Management**: Automatic gas calculation and optimization
+- **Transaction Monitoring**: Tracking transaction status and confirmations
 
 ### 2. Authentication & Authorization
 - **Account Integration**: Connecting NEAR accounts to agents
@@ -17,18 +18,29 @@ This guide explains how to create AI agents that interact with NEAR smart contra
 
 ## Common Use Cases
 
-### 1. Balance Management Agent
-```javascript
-// Example agent structure for balance checking
-class BalanceCheckAgent {
-  async checkBalance(accountId) {
-    // Contract view call
-    return await contract.view(
-      'get_balance',
-      { account_id: accountId }
-    );
-  }
-}
+### 1. Modern NEAR Account Management
+```python
+# Example agent structure for account management
+class NEARAccountAgent:
+    def __init__(self, env, private_key):
+        self.env = env
+        self.private_key = private_key
+        self.public_key = self.get_public_key(private_key)
+        self.account_id = self.get_account_id(public_key)
+
+    async def get_account_info(self):
+        # Get comprehensive account information
+        balance = await self.get_account_balance()
+        fts = self.get_account_fts()
+        nfts = self.get_account_nfts()
+        pools = self.get_account_staking_pools()
+        
+        return {
+            'balance': balance,
+            'tokens': fts,
+            'nfts': nfts,
+            'staking_pools': pools
+        }
 ```
 
 ### 2. Deposit Management Agent
@@ -141,11 +153,7 @@ class SmartContractAgent {
    - User interaction simulation
    - Network condition testing
 
-## Resources
 
-- [NEAR SDK Documentation](https://docs.near.org/docs/develop/contracts/overview)
-- [NEAR Wallet Integration](https://docs.near.org/docs/develop/integrate/wallet)
-- [Contract Examples](https://examples.near.org)
 
 ## Next Steps
 
