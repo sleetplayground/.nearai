@@ -1,1 +1,8 @@
-{}
+{
+  "showInlineTitle": false,
+  "newFileLocation": "current",
+  "newFileFolderPath": "",
+  "newLinkFormat": "relative",
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "DOCS/src"
+}
