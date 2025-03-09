@@ -7,6 +7,8 @@ Links:
 - https://app.near.ai/
 - https://github.com/nearai/nearai
 
+![](DOCS/src/sleet_banner_100px_7d84b2.svg)
+
 ---
 
 ### Installing NEAR AI CLI
@@ -50,8 +52,18 @@ nearai registry upload <path-to-agent>
 ```
 
 
+---
+
+### Docs
+- [models](DOCS/models.md)
+
+registry
+- [README](registry/README.md)
+
+py
+- [README](py/README.md)
 
 
 ---
-
+![](DOCS/src/sleet_banner_100px_7d84b2.svg)
 copyright 2025 by sleet.near

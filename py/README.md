@@ -1,6 +1,5 @@
-# Runnable python scipts
-
-Run from the root of this repo, file paths are relavtive.
+# Runnable python scripts
+Run from the root of this repo, file paths are relative.
 
 
 Listing Available Models
@@ -11,3 +10,7 @@ https://docs.near.ai/models/home/
 
 
 
+
+---
+![](DOCS/src/sleet_banner_100px_7d84b2.svg)
+copyright 2025 by sleet.near

@@ -4,6 +4,8 @@ Links
 - https://docs.near.ai/agents/registry/
 - https://app.near.ai/agents
 
+![](../DOCS/src/sleet_banner_100px_7d84b2.svg)
+
 ---
 
 **View all agents**
@@ -87,5 +89,5 @@ Example:
 https://docs.near.ai/agents/registry/#embedding-an-agent
 
 ---
-
+![](../DOCS/src/sleet_banner_100px_7d84b2.svg)
 copyright 2025 by sleet.near
