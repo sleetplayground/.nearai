@@ -5,6 +5,7 @@ Links:
 - https://near.ai/
 - https://docs.near.ai/
 - https://app.near.ai/
+- https://github.com/nearai
 - https://github.com/nearai/nearai
 
 ![](DOCS/src/sleet_banner_100px_7d84b2.svg)
