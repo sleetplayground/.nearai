@@ -90,11 +90,15 @@ class FineTunedContractAgent {
 4. **Training Process**
    ```bash
    # Example fine-tuning command
-   near-ai train \
-     --model base_model \
-     --train-data contract_interactions.jsonl \
-     --epochs 3 \
-     --learning-rate 1e-5
+   poetry run python3 -m nearai finetune start \
+     --model llama-3-8b-instruct \
+     --format llama3-8b \
+     --tokenizer llama-3-8b-instruct/tokenizer.model \
+     --dataset ./orca_math_gsm8k_train \
+     --method nearai.finetune.text_completion.dataset \
+     --column question_and_answer \
+     --split train \
+     --num_procs 8
    ```
 
 5. **Evaluation**
