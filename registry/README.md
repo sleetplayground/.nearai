@@ -59,7 +59,7 @@ The upload command requires the path to the agent folder stored locally, for exa
 nearai registry upload ~/.nearai/registry/<your-account.near>/<agent_folder>
 
 # optionally you can run this directly in the folder
-nearai registry upload
+nearai registry upload .
 ```
 
 The folder must contain:
