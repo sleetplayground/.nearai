@@ -4,6 +4,8 @@
 # .nearai config file
 config.json
 
+# obsidian
+.obsidian/workspace.json
 
 # 👋
 # nearai registry
