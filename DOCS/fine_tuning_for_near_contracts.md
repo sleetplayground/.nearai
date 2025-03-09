@@ -38,34 +38,52 @@ This guide explores the necessity of fine-tuning AI models for NEAR smart contra
 
 ### 1. Using Standard Models with Proper Prompting
 
-```javascript
-// Example: Standard model with structured prompting
-const contractInteraction = async (contract, action, params) => {
+```typescript
+// Example: NEAR contract interaction with structured prompting
+const contractInteraction = async (account: Account, contractId: string, method: string, args: any) => {
   const prompt = `
-    Action: ${action}
-    Parameters: ${JSON.stringify(params)}
-    Contract: ${contract.id}
-    Expected Output: JSON response
+    Contract: ${contractId}
+    Method: ${method}
+    Arguments: ${JSON.stringify(args)}
+    Account: ${account.accountId}
+    Expected: Transaction result format
   `;
   
-  return await model.complete(prompt);
+  const prediction = await model.complete(prompt);
+  return account.functionCall({
+    contractId,
+    methodName: method,
+    args: JSON.parse(prediction)
+  });
 };
 ```
 
 ### 2. Fine-Tuned Model Approach
 
-```javascript
-// Example: Fine-tuned model implementation
-class FineTunedContractAgent {
-  constructor(model, contract) {
-    this.model = model;
-    this.contract = contract;
-  }
+```typescript
+// Example: Fine-tuned model for NEAR contract interactions
+class NEARContractAgent {
+  constructor(
+    private model: any,
+    private account: Account,
+    private contractId: string
+  ) {}
 
-  async processTransaction(input) {
-    // Fine-tuned model handles contract-specific logic
-    const response = await this.model.predict(input);
-    return this.executeTransaction(response);
+  async processTransaction(method: string, args: any) {
+    // Fine-tuned model processes contract-specific logic
+    const prediction = await this.model.predict({
+      method,
+      args,
+      contract: this.contractId
+    });
+
+    return this.account.functionCall({
+      contractId: this.contractId,
+      methodName: method,
+      args: prediction.args,
+      gas: prediction.gas || '30000000000000',
+      deposit: prediction.deposit || '0'
+    });
   }
 }
 ```
@@ -73,11 +91,43 @@ class FineTunedContractAgent {
 ## Fine-Tuning Process
 
 1. **Data Collection**
-   - Gather contract interaction logs
-   - Document successful transaction patterns
-   - Collect error cases and resolutions
+   - Gather NEAR contract interaction logs
+   - Document successful transaction patterns for specific contracts
+   - Collect common error cases and their resolutions
+   - Include cross-contract call patterns
 
 2. **Data Preparation**
+   ```json
+   // Example training data format for NEAR contract interactions
+   {
+     "input": {
+       "contract_id": "nft.examples.testnet",
+       "method": "nft_mint",
+       "args": {
+         "token_id": "token-1",
+         "metadata": {
+           "title": "My NFT",
+           "description": "Test NFT",
+           "media": "https://example.com/nft.png"
+         },
+         "receiver_id": "alice.testnet"
+       }
+     },
+     "output": {
+       "args": {
+         "token_id": "token-1",
+         "metadata": {
+           "title": "My NFT",
+           "description": "Test NFT",
+           "media": "https://example.com/nft.png"
+         },
+         "receiver_id": "alice.testnet"
+       },
+       "gas": "200000000000000",
+       "deposit": "10000000000000000000000"
+     }
+   }
+   ```
    - Clean and format training data
    - Create input-output pairs
    - Validate data quality
@@ -89,39 +139,66 @@ class FineTunedContractAgent {
 
 4. **Training Process**
    ```bash
-   # Example fine-tuning command
-   poetry run python3 -m nearai finetune start \
-     --model llama-3-8b-instruct \
-     --format llama3-8b \
-     --tokenizer llama-3-8b-instruct/tokenizer.model \
-     --dataset ./orca_math_gsm8k_train \
-     --method nearai.finetune.text_completion.dataset \
-     --column question_and_answer \
-     --split train \
-     --num_procs 8
+   # Example fine-tuning command using NEAR AI toolkit
+   near ai finetune \
+     --model near-llm-base \
+     --dataset near-contract-interactions \
+     --epochs 3 \
+     --learning-rate 2e-5 \
+     --batch-size 4 \
+     --validation-split 0.2
    ```
 
-5. **Evaluation**
-   - Test contract interaction accuracy
-   - Measure response latency
-   - Validate error handling
+5. **Evaluation Metrics**
+   - Transaction Success Rate
+     * Measure percentage of successful contract interactions
+     * Track gas estimation accuracy
+     * Monitor deposit amount precision
+
+   - Response Quality
+     * Contract method prediction accuracy
+     * Parameter formatting correctness
+     * Error message clarity
+
+   - Performance Metrics
+     * Latency per request
+     * Throughput under load
+     * Memory usage patterns
+
+6. **Deployment Strategy**
+   - Staged rollout process
+   - A/B testing with existing models
+   - Monitoring and alerting setup
+   - Fallback mechanisms
 
 ## Cost-Benefit Analysis
 
 ### Fine-Tuning Costs
-- Model training compute resources
-- Data collection and preparation time
-- Ongoing model maintenance
+- Model training compute resources on NEAR infrastructure
+- Data collection and preparation time for NEAR contract interactions
+- Ongoing model maintenance and updates for new NEAR protocol features
+- Storage costs for model versions and training data
 
 ### Benefits
-- Improved accuracy for specific use cases
-- Faster response times
-- Better error handling
+- Improved accuracy for NEAR-specific contract interactions
+- Faster response times for common NEAR operations
+- Better error handling for NEAR-specific edge cases
+- Reduced gas costs through optimized predictions
+- Enhanced cross-contract call handling
 
 ### ROI Considerations
-- Transaction volume
-- Complexity of interactions
-- Performance requirements
+- Transaction volume and complexity on NEAR network
+- Gas cost savings from optimized interactions
+- Development time saved through automated contract interactions
+- Reduced error rates in contract calls
+- Network usage patterns and peak load handling
+
+### Implementation Considerations
+- NEAR protocol version compatibility
+- Contract standards compliance (NEP standards)
+- Network resource optimization
+- Security implications of automated interactions
+- Model update frequency based on network changes
 
 ## Best Practices
 
@@ -191,7 +268,10 @@ Carefully evaluate the cost-benefit ratio before committing to a fine-tuning app
 
 ## Resources
 
-- [NEAR AI Documentation](https://docs.near.org/ai)
+- [NEAR AI Documentation](https://docs.near.org/tools/near-ai-engine)
+- [NEAR AI Examples Repository](https://github.com/near/ai-examples)
+- [NEAR Contract Development Best Practices](https://docs.near.org/develop/contracts/best-practices)
+- [NEAR AI Discord Community](https://near.org/discord)
 - [Fine-Tuning Best Practices](https://example.com/fine-tuning)
 - [Contract Interaction Patterns](https://example.com/patterns)
 
