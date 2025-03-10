@@ -10,3 +10,6 @@ hello
 
 # test
 test
+test3
+# nearai agent interactive registry/sleet.near/test/latest --local
+# nearai agent interactive sleet.near/test/latest --local
